@@ -405,7 +405,7 @@ test("Screenshots demo", async({page})=>{
 */
 test("visual comparison demo", async({page})=>{
     await page.goto("https://www.demo.web.toolsqa.com/");
-    expect(await page.screenshot()).toMatchSnapshot("toolsSQA1781603864785.png");
+    expect(await page.locator(".banners").screenshot()).toMatchSnapshot("toolsSQABanners1781603864785.png");
 })
 
 
