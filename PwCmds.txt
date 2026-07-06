@@ -1,0 +1,99 @@
+# Initialize a new Playwright project.
+# This scaffolds project files, installs Playwright and related dependencies,
+# and prompts to configure browsers, test runner, and example tests.
+npm init playwright
+
+# Install Playwright browsers and dependencies for running tests across Chromium, Firefox, and WebKit.
+npx playwright install
+
+# Run Playwright tests in the current project.
+npx playwright test
+
+# Run Playwright tests in headed mode for debugging and visual verification.
+npx playwright test --headed
+
+# Run Playwright codegen with a specified URL to record user interactions and generate test code.
+npx playwright codegen https://example.com
+
+# Open and view a recorded Playwright trace (trace.zip) in the Trace Viewer UI.
+npx playwright show-trace trace.zip
+
+# quick reference of common Playwright CLI commands for setup, testing, and debugging 
+npx playwright test -ui
+
+# Run Playwright tests in debug mode, which allows for step-by-step execution and inspection of test code.
+npx playwright test --debug
+
+# Generate Playwright test code by recording interactions on a specified URL.
+npx playwright test codegen https://example.com
+
+# Open a Playwright trace file (trace.zip) in the Trace Viewer for analysis and debugging.
+npx playwright show-trace trace.zip
+
+# Run Playwright tests specifically in the Chromium browser project.
+npx playwright test --project=chromium
+
+# Run Playwright tests in the Chromium browser with the specified browser name.
+npx playwright test --browserName=chromium
+
+# First setup the package.json file with a test script for running Playwright tests, then execute the tests using npm.
+# debugging the Playwright tests using the npm test script defined in package.json.
+npm run test
+npm run regression
+
+# Run a specific Playwright test using a custom configuration and the Safari browser project.
+npx playwright test e2e_flow_ecommercePOM --config=playwright.custom_config.js --project="safari"
+
+# --grep is used to filter and run tests that match a specific tag or pattern, allowing for targeted test execution.
+npx playwright test --grep=@sanity
+
+# Install Allure integration for enhanced Playwright test reporting.
+npm install -D allure-playwright
+
+# Install the Allure commandline tool for report generation and publishing.
+npm install -D allure-commandline
+
+# Generate Allure report from results (cleans previous report before generating)
+npx allure generate --clean
+
+# Open the generated Allure report in the browser
+npx allure open
+
+# Serve the Allure report locally (starts a web server to view the report)
+npx allure serve
+
+# Install Cucumber.js for Behavior-Driven Development (BDD) support in Playwright tests.
+npm install --save-dev @cucumber/cucumber
+
+# @azure/playwright is a package that provides integration with Azure services for Playwright testing, enabling cloud-based test execution and reporting.
+npm init @azure/playwright@latest
+
+# Run Playwright tests with a custom configuration file and a specified number of parallel workers for concurrent test execution.
+# playwright.service.config..js is azure specific config file for running tests in azure pipeline
+npx playwright test -c playwright.service.config.js --workers=20
+
+# azure login command is used to authenticate and log in to an Azure account from the command line, allowing access to Azure services and resources for deployment, management, and testing purposes.
+C:\Users\nodan>az login
+Select the account you want to log in with. For more information on login with Azure CLI, see https://go.microsoft.com/fwlink/?linkid=2271136
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "72a26016-c854-4ee8-8f86-b7c8c6093354",
+    "id": "99700d9e-b35d-419f-9813-a61d6e303ea1",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Azure subscription 1",
+    "state": "Enabled",
+    "tenantDefaultDomain": "reddynodankumargmail.onmicrosoft.com",
+    "tenantDisplayName": "Default Directory",
+    "tenantId": "72a26016-c854-4ee8-8f86-b7c8c6093354",
+    "user": {
+      "name": "reddynodankumar@gmail.com",
+      "type": "user"
+    }
+  }
+]
+
+
+# Set the Playwright service URL environment variable to connect to the specified Playwright workspace for running tests in Azure.
+$env:PLAYWRIGHT_SERVICE_URL="wss://eastus.api.playwright.microsoft.com/playwrightworkspaces/81934201-7678-4550-a715-e9c64184cf88/browsers"
