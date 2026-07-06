@@ -97,3 +97,33 @@ Select the account you want to log in with. For more information on login with A
 
 # Set the Playwright service URL environment variable to connect to the specified Playwright workspace for running tests in Azure.
 $env:PLAYWRIGHT_SERVICE_URL="wss://eastus.api.playwright.microsoft.com/playwrightworkspaces/81934201-7678-4550-a715-e9c64184cf88/browsers"
+
+# Show the current Azure subscription ID (output as plain text)
+C:\Users\nodan>az account show --query id --output tsv
+99700d9e-b35d-419f-9813-a61d6e303ea1
+
+# List resource groups in a table format
+C:\Users\nodan>az group list --output table
+Name              Location    Status
+----------------  ----------  ---------
+pw_test_resource  eastus      Succeeded
+
+# Create a service principal with RBAC role 'contributor' scoped to the resource group
+# NOTE: The command returns credentials (clientId, clientSecret, tenantId, subscriptionId).
+#       Keep these secure and do NOT commit them to source control.
+C:\Users\nodan>az ad sp create-for-rbac --name "GitHub-Actions-Secret-Based" --role contributor --scopes /subscriptions/99700d9e-b35d-419f-9813-a61d6e303ea1/resourceGroups/pw_test_resource --json-auth
+Option '--sdk-auth' has been deprecated and will be removed in a future release.
+Creating 'contributor' role assignment under scope '/subscriptions/99700d9e-b35d-419f-9813-a61d6e303ea1/resourceGroups/pw_test_resource'
+# The output includes credentials that you must protect. For more information, see https://aka.ms/azadsp-cli
+{
+  "clientId": "9196273d-8b14-4b43-86fa-7d5ff7821523",
+  "clientSecret": "<REDACTED_IN_FILE>",
+  "subscriptionId": "99700d9e-b35d-419f-9813-a61d6e303ea1",
+  "tenantId": "72a26016-c854-4ee8-8f86-b7c8c6093354",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
