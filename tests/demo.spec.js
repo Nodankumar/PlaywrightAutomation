@@ -186,7 +186,7 @@ test("locating element using playwright special locators", async ({ page }) => {
     3. Or use locator: page.locator('a.text-reset')
   */
 
-    await page.goto("https://www.flipkart.com/");
+    await page.goto("https://www.flipkart.com");
     //.press('Enter') is used to simulate the pressing of the Enter key after filling the search input field.
     await page.getByPlaceholder("Search for products, brands and more").first().fill("vivo t4 lite");
     await page.getByPlaceholder("Search for products, brands and more").first().press("Enter");
