@@ -21,6 +21,6 @@ export default defineConfig(
     This configuration will replace any existing reporter settings from your base config.
     If you're already using other reporters, add them to this array.
     */
-    reporter: [["html"], ["@azure/playwright/reporter"],]
+    reporter: [["html"], ["@azure/playwright/reporter"]]
   }
 );
