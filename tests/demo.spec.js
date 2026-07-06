@@ -404,8 +404,8 @@ test("Screenshots demo", async({page})=>{
   This is particularly useful for visual regression testing, where you want to ensure that changes to your application do not unintentionally alter the visual appearance of your pages.
 */
 test("visual comparison demo", async({page})=>{
-    await page.goto("https://www.facebook.com");
-    expect(await page.screenshot()).toMatchSnapshot("fb1781603864785.png");
+    await page.goto("https://www.demo.web.toolsqa.com/");
+    expect(await page.screenshot()).toMatchSnapshot("toolsSQA1781603864785.png");
 })
 
 
