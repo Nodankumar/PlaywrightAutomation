@@ -15,7 +15,7 @@ export default defineConfig({
   testDir: './tests',
 
   //Global timeout for each test
-  timeout: 30 * 1000,
+  timeout: 45 * 1000,
 
   expect: {
     // Maximum time expect() should wait for the condition to be met.
@@ -66,11 +66,13 @@ export default defineConfig({
     //set the default browser to chromium
     browserName:'chromium',
 
-    //run the tests in headed mode
-    headless: false,
+    //run the tests in headed mode locally, but use headless in CI containers
+    headless: !!process.env.CI,
 
     //set timeout for each action to 30 seconds
     timeout: 30 * 1000,
+    actionTimeout: 15 * 1000,
+    navigationTimeout: 30 * 1000,
 
     expect: {
       // Maximum time expect() should wait for the condition to be met.

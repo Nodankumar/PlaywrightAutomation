@@ -65,6 +65,9 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
+    actionTimeout: 15_000,
+    navigationTimeout: 30_000,
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer 
       Available options to record a trace:
       'on-first-retry' - Record a trace only when retrying a test for the first time.
@@ -107,7 +110,10 @@ export default defineConfig({
       name: "chrome",
       use: {
         browserName: "chromium",
-        headless: false,
+        headless: !!process.env.CI,
+        launchOptions: {
+          args: ["--disable-dev-shm-usage"]
+        },
         /*
           ignoreHTTPSErrors: true allows the browser to bypass SSL certificate errors, 
           which is useful for testing in environments with self-signed certificates or other SSL issues.
