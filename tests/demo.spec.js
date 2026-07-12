@@ -403,10 +403,10 @@ test("Screenshots demo", async({page})=>{
    and you will be provided with a diff image that highlights the differences.
   This is particularly useful for visual regression testing, where you want to ensure that changes to your application do not unintentionally alter the visual appearance of your pages.
 */
-// test("visual comparison demo", async({page})=>{
-//     await page.goto("https://www.demo.web.toolsqa.com/");
-//     expect(await page.locator(".banners").screenshot()).toMatchSnapshot("toolsSQABanners1781603864785.png");
-// })
+test.skip("visual comparison demo", async({page})=>{
+    await page.goto("https://www.demo.web.toolsqa.com/");
+    expect(await page.locator(".banners").screenshot()).toMatchSnapshot("toolsSQABanners1781603864785.png");
+})
 
 
 
