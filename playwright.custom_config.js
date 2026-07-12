@@ -64,8 +64,6 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
-
-    actionTimeout: 15_000,
     navigationTimeout: 30_000,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer 
@@ -110,7 +108,7 @@ export default defineConfig({
       name: "chrome",
       use: {
         browserName: "chromium",
-        headless: !!process.env.CI,
+        headless: false,
         launchOptions: {
           args: ["--disable-dev-shm-usage"]
         },

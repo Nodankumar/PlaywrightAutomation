@@ -66,12 +66,11 @@ export default defineConfig({
     //set the default browser to chromium
     browserName:'chromium',
 
-    //run the tests in headed mode locally, but use headless in CI containers
-    headless: !!process.env.CI,
+    //run tests in headed mode for better visibility during test execution
+    headless:  false,
 
     //set timeout for each action to 30 seconds
     timeout: 30 * 1000,
-    actionTimeout: 15 * 1000,
     navigationTimeout: 30 * 1000,
 
     expect: {
